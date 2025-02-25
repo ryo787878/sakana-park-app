@@ -44,8 +44,12 @@ export default function DashboardPage() {
       setSuccess("お知らせが投稿されました！");
       setTitle("");
       setContent("");
-    } catch (err: any) {
-      setError(err.message || "お知らせの投稿に失敗しました");
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setError(err.message || "お知らせの投稿に失敗しました");
+      } else {
+        setError("お知らせの投稿に失敗しました");
+      }
     }
   };
 

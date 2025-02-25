@@ -21,8 +21,12 @@ export default function LoginPage() {
 
       // ログイン成功 → ダッシュボードへ遷移
       router.push("/admin/dashboard");
-    } catch (err: any) {
-      setError(err.message ?? "ログインエラーが発生しました");
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setError(err.message ?? "ログインエラーが発生しました");
+      } else {
+        setError("ログインエラーが発生しました");
+      }
     }
   };
 

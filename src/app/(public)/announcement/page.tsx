@@ -9,7 +9,7 @@ type Announcement = {
   id: string;
   title: string;
   content: string;
-  createdAt?: any;
+  createdAt?: Date;
 };
 
 export default function AnnouncementPage() {
@@ -60,7 +60,7 @@ export default function AnnouncementPage() {
           <p>{ann.content}</p>
           {ann.createdAt && (
             <small>
-              {ann.createdAt.toDate().toLocaleString()}
+              {ann.createdAt.toLocaleString()}
             </small>
           )}
         </div>
